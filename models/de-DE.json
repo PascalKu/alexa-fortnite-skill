@@ -19,8 +19,8 @@
           "name": "RecommendCityIntent",
           "slots": [],
           "samples": [
-            "landezone",
-            "landeort",
+            "mein squad und ich brauchen einen landeort",
+            "in welchem bereich sollen wir landen",
             "In welchem Bereich soll ich landen ",
             "in welcher Zone darf ich landen",
             "wo darf ich landen",
@@ -36,6 +36,8 @@
           "name": "KillIntent",
           "slots": [],
           "samples": [
+            "noch einen kill mehr",
+            "der spieler ist nun auch tot",
             "noch ein Spieler weniger",
             "ich habe einen getoetet",
             "ich habe einen kill gemacht"
@@ -45,8 +47,10 @@
           "name": "FortniteFaktIntent",
           "slots": [],
           "samples": [
+            "was hat fortnite für geheimnisse",
+            "erzähle mir ein geheimnis über fortnite",
+            "kannst du mir ein fortnite geheimnis erzählen",
             "verrat mir ein geheimnis",
-            "fakt",
             "verrat mir einen fortnite fakt",
             "erzaehle mir einen Fakt ueber Fortnite",
             "erzaehl mir einen fortnite fakt"
@@ -56,6 +60,7 @@
           "name": "DeathIntent",
           "slots": [],
           "samples": [
+            "Ich bin aus der Runde geflogen",
             "loesche den killcounter",
             "setze den kill counter zurueck",
             "resette den kill counter",
@@ -70,6 +75,7 @@
           "name": "GetKillInformationIntent",
           "slots": [],
           "samples": [
+            "wie viele kills habe ich",
             "wie viele spieler habe ich getoetet",
             "verrate mir wie viele kills ich habe",
             "wie viele kills habe ich aktuell"

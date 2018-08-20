@@ -1,0 +1,20 @@
+# Maven :3
+/build.xml
+/target
+dependency-reduced-pom.xml
+
+# vim
+.*.sw[a-p]
+
+# various other potential build files
+/build
+/bin
+/dist
+/manifest.mf
+
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+target/*

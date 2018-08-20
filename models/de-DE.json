@@ -1,0 +1,126 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "fortnite",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "RecommendCityIntent",
+          "slots": [],
+          "samples": [
+            "landezone",
+            "landeort",
+            "In welchem Bereich soll ich landen ",
+            "in welcher Zone darf ich landen",
+            "wo darf ich landen",
+            "wo soll ich heute landen",
+            "in welchem Ort soll ich landen",
+            "zu welchem Ort soll ich gehen",
+            "wo soll ich hingehen",
+            "wo soll ich landen",
+            "schlag mir einen landeort vor"
+          ]
+        },
+        {
+          "name": "KillIntent",
+          "slots": [],
+          "samples": [
+            "noch ein Spieler weniger",
+            "ich habe einen getoetet",
+            "ich habe einen kill gemacht"
+          ]
+        },
+        {
+          "name": "FortniteFaktIntent",
+          "slots": [],
+          "samples": [
+            "verrat mir ein geheimnis",
+            "fakt",
+            "verrat mir einen fortnite fakt",
+            "erzaehle mir einen Fakt ueber Fortnite",
+            "erzaehl mir einen fortnite fakt"
+          ]
+        },
+        {
+          "name": "DeathIntent",
+          "slots": [],
+          "samples": [
+            "loesche den killcounter",
+            "setze den kill counter zurueck",
+            "resette den kill counter",
+            "stoppe den kill counter",
+            "die runde ist vorbei",
+            "Setz den Kill-Counter auf null",
+            "Das war wohl mein Tod",
+            "Ich bin gestorben"
+          ]
+        },
+        {
+          "name": "GetKillInformationIntent",
+          "slots": [],
+          "samples": [
+            "wie viele spieler habe ich getoetet",
+            "verrate mir wie viele kills ich habe",
+            "wie viele kills habe ich aktuell"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "KillIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1316708622848"
+          },
+          "slots": []
+        },
+        {
+          "name": "DeathIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.60179324021"
+          },
+          "slots": []
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.1316708622848",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Hast du gerade ernsthaft einen anderen Spieler getoetet?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Hast du gerade einen Kill gemacht?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.60179324021",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Soll ich den Killcounter wirklich zurücksetzen?"
+          }
+        ]
+      }
+    ]
+  }
+}

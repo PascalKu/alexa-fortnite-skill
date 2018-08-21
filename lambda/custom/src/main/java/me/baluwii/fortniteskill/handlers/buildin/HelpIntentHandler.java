@@ -21,14 +21,12 @@ public class HelpIntentHandler implements RequestHandler {
         return input.matches( intentName( "AMAZON.HelpIntent" ) );
     }
 
-    private final String speechAnswer = "Frag mich, wo du landen sollst mit \"Alexa frage Fortnite, wo soll ich landen\" " +
-            "oder lass dir einen Fakt von mir verraten mit \"Alexa, frag Fortnite was hat fortnite für geheimnisse\".";
-
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
         return input.getResponseBuilder()
-                .withSpeech( speechAnswer )
-                .withReprompt( "Womit kann ich dir helfen?" )
+                .withSpeech( "Frag mich, wo du landen sollst mit \"Alexa frage Fortnite, wo soll ich landen\" " +
+                        "oder lass dir einen Fakt von mir verraten mit \"Alexa, frag Fortnite was hat fortnite für geheimnisse\"." )
+                .withReprompt( "Soll ich dir zum Beispiel einen Landeort vorschlagen?" )
                 .withShouldEndSession( false )
                 .build();
     }

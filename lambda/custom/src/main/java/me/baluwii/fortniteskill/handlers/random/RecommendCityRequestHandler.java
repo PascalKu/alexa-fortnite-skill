@@ -36,15 +36,6 @@ public class RecommendCityRequestHandler implements RequestHandler {
             )
     );
 
-    private final List<String> repromtSentences = new ArrayList<>(
-            Arrays.asList(
-                    "Und, hast du meinen Rat befolgt?",
-                    "Lass es mich wissen, wenn ich dir weitere Tipps geben soll.",
-                    "Sag mir bescheid, wenn ich dir einen anderen Ort empfehlen soll!",
-                    "Und, wo bist du gelandet?"
-            )
-    );
-
     @Override
     public boolean canHandle( final HandlerInput input ) {
         return input.matches( intentName( "RecommendCityIntent" ) );
@@ -52,22 +43,19 @@ public class RecommendCityRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
-        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( false );
+        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( true );
 
         if ( cities.isEmpty() ) {
             responseBuilder
                     .withSimpleCard( "Ort-Empfehlung", "¯\\_(ツ)_/¯" )
-
-                    .withSpeech( "Puhh... Mit deinen Skills kannst du überall landen!" )
-                    .withReprompt( "Okay, war nur ein Spaß. Ich habe aktuell echt keine Ahnung von den aktuellen Orten." );
+                    .withSpeech( "Puhh... Mit deinen Skills kannst du überall landen!" );
         } else {
             final String sentence = sentences.get( new Random().nextInt( sentences.size() ) );
             final String targetCity = cities.get( new Random().nextInt( cities.size() ) );
 
             responseBuilder
                     .withSimpleCard( "Ort-Empfehlung", targetCity )
-                    .withSpeech( MessageFormat.format( sentence, targetCity ) )
-                    .withReprompt( repromtSentences.get( new Random().nextInt( repromtSentences.size() ) ) );
+                    .withSpeech( MessageFormat.format( sentence, targetCity ) );
         }
 
         return responseBuilder.build();

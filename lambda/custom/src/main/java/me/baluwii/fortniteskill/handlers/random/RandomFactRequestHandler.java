@@ -32,7 +32,7 @@ public class RandomFactRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
-        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( false );
+        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( true );
 
         if ( facts.isEmpty() ) {
             // Return an error message.

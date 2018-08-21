@@ -46,6 +46,7 @@ public class KillCounterRequestHandler implements RequestHandler {
             responseBuilder.withSpeech( "Wenn du mich nicht angelogen hast, hast du " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) );
         }
 
+        responseBuilder.withReprompt( "Soll ich dir einen zufälligen Landeort verraten oder weitere Kills zählen?" );
         responseBuilder.withSimpleCard( "Kill-Counter", "Kills: " + sessionAttributes.getOrDefault( "killCounter", 0 ) );
 
         return responseBuilder.build();

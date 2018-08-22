@@ -28,9 +28,12 @@ public class KillCounterRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
         final Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( false );
+        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( true );
 
         if ( input.matches( intentName( "KillIntent" ) ) ) {
+            responseBuilder.withShouldEndSession( false );
+            responseBuilder.withReprompt( "Soll ich dir einen zufälligen Landeort verraten oder weitere Kills zählen?" );
+
             final int kills;
             sessionAttributes.put( "killCounter", kills = (int) sessionAttributes.getOrDefault( "killCounter", 0 ) + 1 );
 
@@ -46,9 +49,7 @@ public class KillCounterRequestHandler implements RequestHandler {
             responseBuilder.withSpeech( "Wenn du mich nicht angelogen hast, hast du " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) );
         }
 
-        responseBuilder.withReprompt( "Soll ich dir einen zufälligen Landeort verraten oder weitere Kills zählen?" );
         responseBuilder.withSimpleCard( "Kill-Counter", "Kills: " + sessionAttributes.getOrDefault( "killCounter", 0 ) );
-
         return responseBuilder.build();
     }
 }

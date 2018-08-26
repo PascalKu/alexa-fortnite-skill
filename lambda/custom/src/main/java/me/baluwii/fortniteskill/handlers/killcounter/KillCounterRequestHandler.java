@@ -45,7 +45,7 @@ public class KillCounterRequestHandler implements RequestHandler {
             responseBuilder.withSpeech( "Schade, damit bist du mit " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) + " aus der Runde gegangen!" );
             sessionAttributes.remove( "killCounter" );
         } else if ( input.matches( intentName( "GetKillInformationIntent" ) ) ) {
-            responseBuilder.withSpeech( "Wenn du mich nicht angelogen hast, hast du " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) );
+            responseBuilder.withSpeech( "Wenn du mich nicht angelogen hast, hast du " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? " Kill" : " Kills" ) );
         }
 
         responseBuilder.withSimpleCard( "Kill-Counter", "Kills: " + sessionAttributes.getOrDefault( "killCounter", 0 ) );

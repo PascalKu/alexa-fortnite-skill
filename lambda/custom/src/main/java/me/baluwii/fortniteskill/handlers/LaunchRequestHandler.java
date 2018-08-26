@@ -25,10 +25,12 @@ public class LaunchRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
         return input.getResponseBuilder()
+                .withSimpleCard( "Fortnite-Skill", "Wie kann ich dir behilflich sein?" )
+
                 .withSpeech( "Hi! Ich kann dir Landeorte vorschlagen, dir Geheimnisse verraten und deine Kills zählen!" )
                 .withReprompt( "Soll ich dir zum Beispiel einen Landeort vorschlagen?" )
-                .withSimpleCard( "Fortnite-Skill", "Wie kann ich dir behilflich sein?" )
-                .withShouldEndSession( true )
+
+                .withShouldEndSession( false )
                 .build();
     }
 }

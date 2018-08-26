@@ -31,7 +31,6 @@ public class KillCounterRequestHandler implements RequestHandler {
         final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( true );
 
         if ( input.matches( intentName( "KillIntent" ) ) ) {
-            responseBuilder.withShouldEndSession( false );
             responseBuilder.withReprompt( "Soll ich dir einen zufälligen Landeort verraten oder weitere Kills zählen?" );
 
             final int kills;

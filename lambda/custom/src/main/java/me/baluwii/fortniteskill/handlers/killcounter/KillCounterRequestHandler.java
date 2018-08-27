@@ -28,7 +28,7 @@ public class KillCounterRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle( final HandlerInput input ) {
         final Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        final ResponseBuilder responseBuilder = input.getResponseBuilder().withShouldEndSession( true );
+        final ResponseBuilder responseBuilder = input.getResponseBuilder();
 
         if ( input.matches( intentName( "KillIntent" ) ) ) {
             responseBuilder.withReprompt( "Soll ich dir einen zufälligen Landeort verraten oder weitere Kills zählen?" );
@@ -42,13 +42,13 @@ public class KillCounterRequestHandler implements RequestHandler {
                 responseBuilder.withSpeech( "Wow, " + ( kills == 1 ? "einen Kill" : kills + " " + ( kills > 3 ? "schon" : "" ) + "Kills" ) );
             }
         } else if ( input.matches( intentName( "DeathIntent" ) ) ) {
-            responseBuilder.withSpeech( "Schade, damit bist du mit " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) + " aus der Runde gegangen!" );
+            responseBuilder.withSpeech( "Schade, damit bist du mit " + sessionAttributes.getOrDefault( "killCounter", 0 ) + " " +( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? "Kill" : "Kills" ) + " aus der Runde gegangen!" );
             sessionAttributes.remove( "killCounter" );
         } else if ( input.matches( intentName( "GetKillInformationIntent" ) ) ) {
             responseBuilder.withSpeech( "Wenn du mich nicht angelogen hast, hast du " + sessionAttributes.getOrDefault( "killCounter", 0 ) + ( (int) sessionAttributes.getOrDefault( "killCounter", 0 ) == 1 ? " Kill" : " Kills" ) );
         }
 
         responseBuilder.withSimpleCard( "Kill-Counter", "Kills: " + sessionAttributes.getOrDefault( "killCounter", 0 ) );
-        return responseBuilder.build();
+        return responseBuilder.withShouldEndSession( true ).build();
     }
 }

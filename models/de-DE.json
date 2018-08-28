@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "fortnite",
+      "invocationName": "fortnite assistent",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
